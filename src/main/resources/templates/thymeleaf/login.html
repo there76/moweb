@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<div class="container">
+    <div class="main-contents">
+        <div class="main-title sub-title">
+            <div class="d-flex ">
+                <h2 class="din-font">로그인</h2>
+                <div class="sub-right-title">
+                    <h2 class="noto-font">Login</h2>
+                    <div class="sub-title-border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-contents">
+            <div class="contact-div">
+                <div class="contact-cont">
+                    <div class="form-signin-div login-div " >
+                        <form class="form-signin" id="" name="" action="/login" method="post">
+                            <div class="form-input-group">
+                                <div class="form-label-group w-100">
+                                    <label for="userId" class="placeLabel">아이디 <span>*</span></label>
+                                    <input type="text" id="userId" name="userId" class="form-control"  required autofocus />
+                                    <small class="form-text text-muted text-center"></small>
+                                </div>
+                            </div>
+                            <div class="form-input-group">
+                                <div class="form-label-group w-100">
+                                    <label for="password" class="placeLabel">비밀번호 <span>*</span></label>
+                                    <input type="password" id="password" name="password" class="form-control"  required  />
+                                    <small class="form-text text-muted text-center"></small>
+                                </div>
+                            </div>
+
+                            <div class="login-error-div" th:if="${param.error != null}">
+                                <div th:if="${(param.error[0] == '1')}">자격 증명에 실패하였습니다.</div>
+                                <div th:if="${(param.error[0] == '2')}">사용자 계정이 잠겨 있습니다.</div>
+                                <div th:if="${(param.error[0] == '3')}">자격 증명 유효 기간이 만료되었습니다.</div>
+                                <div th:if="${(param.error[0] == '4')}">유효하지 않은 사용자입니다.</div>
+                                <div th:if="${(param.error[0] == '5')}">사용자 계정의 유효 기간이 만료 되었습니다.</div>
+                                <div th:if="${(param.error[0] == '6')}">자격 증명에 실패하였습니다.</div>
+                            </div>
+
+                            <button type="submit" class="form-input-button">로그인</button>
+                            <hr class="my-4">
+
+                            <div class="text-center login-bottom">
+                                <a href="/join">회원 가입</a>
+                                <span>|</span>
+                                <a href="/findId">아이디 찾기</a>
+                                <span>|</span>
+                                <a href="/findPw">비밀번호 찾기</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<code id="scripts-wrap">
+<script>
+    (function (global, $) {
+
+        $(".header").addClass('header-pixed');
+
+
+    }(window, window.jQuery));
+</script>
+</code>
+</body>
+</html>

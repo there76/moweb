@@ -1,0 +1,24 @@
+.main-make-div {
+    display: block;
+}
+
+.company-container {
+    overflow: hidden;
+}
+
+.sub-contents {
+    .sub-content {
+        li {
+            display:inline-block;
+            margin-right:23px;
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+    .sub-sub-cont {
+        li {
+            width:31%;
+        }
+    }
+}

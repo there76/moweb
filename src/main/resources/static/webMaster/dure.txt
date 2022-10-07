@@ -1,0 +1,8 @@
+<head>
+<title>두레</title>
+<meta property="og:type" content="website"> 
+<meta property="og:title" content="두레">
+<meta property="og:description" content="일회용 식품포장용기 기업. 펄프용기, 종이트레이, 일회용용기, 초밥용기, 특수 종이컵, 도시락, 친환경 PLA용기, 알루미늄용기">
+<meta property="og:image" content="http://www.durepack.com/dure.jpg">
+<meta property="og:url" content="http://www.durepack.com">
+</head>

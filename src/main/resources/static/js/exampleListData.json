@@ -1,0 +1,90 @@
+{
+  "detailData":
+  [
+    {
+      "no": "1",
+      "title":"EM-18-10호(B),EM-18-10호(B),EM-18-10호(B),EM-18-10호(B)EM-18-10호(B)EM-18-10호(B)EM-18-10호(B)EM-18-10호(B)",
+      "date":"2021.10.15",
+      "state":"신청",
+      "companyName":"회사명",
+      "address":"TEST 주소TEST 주소TEST 주소TEST 주소TEST 주소",
+      "name":"담당자명",
+      "phone":"010-1111-2222",
+      "email":"email@email.com",
+      "img": [
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)1"
+        },
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        },
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)3"
+        },
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)4"
+        }
+      ],
+      "content":"답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트"
+    },
+    {
+      "no": "2",
+      "title":"EM-18-10호(B)",
+      "date":"2021.10.15",
+      "state":"신청",
+      "companyName":"회사명2",
+      "address":"TEST 주소TEST 주소TEST 주소TEST 주소TEST 주소",
+      "name":"담당자명",
+      "phone":"010-1111-2222",
+      "email":"email@email.com",
+      "img": [
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)1"
+        },
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        }
+      ],
+      "content":"답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트"
+    },
+    {
+      "no": "3",
+      "title":"EM-18-10호(B),EM-18-10호(B)",
+      "date":"2021.10.15",
+      "state":"신청",
+      "companyName":"회사명3",
+      "address":"TEST 주소TEST 주소TEST 주소TEST 주소TEST 주소",
+      "name":"담당자명",
+      "phone":"010-1111-2222",
+      "email":"email@email.com",
+      "img": [
+        {
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)1"
+        },{
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        },{
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)1"
+        },{
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        },{
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        },{
+          "src":"/static/img/product/img_01.jpg",
+          "name": "EM-18-10호(B)2"
+        }
+      ],
+      "content":"답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트답변입니다 테스트"
+    }
+  ]
+}

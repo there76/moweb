@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project default="deployWebDev" basedir=".">
+    <target name="init">
+
+        <tstamp>
+            <format property="TIMESTAMP1" pattern="MM/dd/yyyy hh:mm aaa" locale="en.US" offset="-30" unit="minute" />
+        </tstamp>
+
+
+        <property name="name" value="moweb" />
+        <property name="version" value="1.0" />
+        <property name="year" value="2015" />
+
+        <property name="debug" value="off" />
+        <property name="optimize" value="on" />
+        <property name="deprecation" value="on" />
+
+        <property name="src.encoding" value="UTF-8" />
+        <property name="src.dir" value="./src" />
+        <property name="lib.dir" value="./WEB-INF/lib" />
+        <property name="build.dir" value="./WEB-INF/classes" />
+
+        <property name="package.dir" value="./package" />
+    </target>
+
+
+
+    <target name="compile" depends="init">
+
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}" debug="true" deprecation="off" optimize="${optimize}" encoding="${src.encoding}">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar" />
+                    <include name="**/*.zip" />
+                    <include name="**/*.apk" />
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+</project>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>관리자</title>
+
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <link href="/static/lib/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/lib/vue/vuetify-v2.5.2/vuetify-v2.5.2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/lib/sweetalert2/9.17.1/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/lib/toastr/toastr-2.1.1.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/lib/jstree/3.3.11/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/css/admin/mercury.vuetify.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/admin/mercury.template.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/admin/mercury.common.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/lib/vue/vue-file-agent-1.7.1/vue-file-agent.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .app-logo .v-image__image--cover {
+            background-size: 98%;
+        }
+
+        .title-with-search {
+            padding: 2px 16px;
+        }
+
+        .title-with-search .search-form > .container {
+            padding: 0;
+        }
+
+        .div-scroll-y {
+            height: calc(100vh - 146px);
+            overflow-y: scroll;
+        }
+
+        .sortable-ghost {
+            opacity: 0.5;
+            background: #ffc107 !important;
+            color: black !important;
+        }
+        .min-width--300 {
+            min-width: 300px !important;
+        }
+    </style>
+</head>
+<body>
+<div id="app-wrapper" v-cloak>
+    <div class="ubcs-container">
+        <v-app class="admin">
+            <ub-app-bar :logo="logo" :profile="profile" @click:nav-icon="drawer = !drawer" :server-mode="serverMode"></ub-app-bar>
+            <ub-navigation-drawer :logo="logo" :service-menu="templateMenus" :width="190" v-model="drawer"></ub-navigation-drawer>
+            <v-main>
+                <v-container fluid>
+                    <v-fade-transition hide-on-leave="">
+                        <div>
+                            <v-app-bar dense>
+                                <v-toolbar-title v-text="$route.meta.title"></v-toolbar-title>
+                            </v-app-bar>
+                            <v-sheet class="pa-2" outlined>
+                                <router-view></router-view>
+                            </v-sheet>
+                        </div>
+                    </v-fade-transition>
+                </v-container>
+            </v-main>
+            <ub-overlay></ub-overlay>
+        </v-app>
+    </div>
+</div>
+
+<script src="/static/lib/jquery/jquery-3.0.0.min.js"></script>
+<script src="/static/lib/jquery/jquery.filedownload.min.js"></script>
+<script src="/static/lib/lodash.min.js"></script>
+<script src="/static/lib/moment.min.js"></script>
+<script src="/static/lib/sweetalert2/9.17.1/sweetalert2.min.js"></script>
+<script src="/static/lib/toastr/toastr-2.1.1.min.js"></script>
+<script src="/static/lib/jstree/3.3.11/jstree.min.js"></script>
+
+
+<script src="/static/lib/vue/2.6.11/vue.js"></script>
+<script src="/static/lib/vue/vuex-3.6.2/vuex.js"></script>
+<script src="/static/lib/vue/vue-router/vue-router-3.5.1.min.js"></script>
+<script src="/static/lib/vue/vuetify-v2.5.2/vuetify-v2.5.2.min.js"></script>
+<script src="/static/lib/vue/v-md-date-range-picker-2.6.0/v-md-date-range-picker-custom.js"></script>
+<script src="/static/lib/vue/draggable/Sortable.min.js"></script>
+<script src="/static/lib/vue/draggable/vuedraggable.umd.min.js"></script>
+
+
+<script src="/static/lib/vue/vue-easy-tinymce-1.0.2/tinymce/tinymce-vue-1.0.0.min.js"></script>
+
+<script src="/static/lib/vue/vue-file-agent-1.7.1/vue-file-agent.umd.js"></script>
+
+
+
+<script src="/static/lib/ubicus/ubicus.base.util.js"></script>
+<script src="/static/lib/ubicus/ubicus.base.lib.js"></script>
+<script src="/static/lib/ubicus/ubicus.base.ui.js"></script>
+<script src="/static/lib/ubicus/ubicus.base.vue.js"></script>
+<script src="/static/lib/ubicus/ubicus.base.rule.js"></script>
+<script src="/api/v1/base/codes/scripts"></script>
+<script type="module" th:inline="javascript">
+    import UbAppBar from '/static/apps/components/navigation/UbAppBar.js';
+    import UbOverlay from '/static/apps/components/ui/UbOverlay.js';
+    import UbNavigationDrawer from '/static/apps/components/navigation/UbNavigationDrawer.js';
+
+    import baseStore from '/static/apps/store/baseStore.js';
+
+    (async function () {
+        var maxFileSize = /*[[${@environment.getProperty("spring.servlet.multipart.maxFileSize")}]]*/;
+        var allowedUploadExtensions = /*[[${@environment.getProperty("apps.upload.allowedUploadExtensions")}]]*/;
+
+        var menus = await xAjax({
+            url: '/static/menu/admin_menu.json',
+            usePrefixUrl: false,
+            data: {
+                menuId: 'durepack-admin'
+            }
+        });
+
+        var user = await xAjax({
+            url: '/static/menu/admin_me.json',
+            usePrefixUrl: false
+        }).then(resp => {
+            return resp.user;
+        });
+
+        var productCategories = await xAjax({
+            url: '/static/menu/admin_tree.json',
+            usePrefixUrl: false,
+            data: {
+                categoryType: 'PRODUCT',
+                useYn: 'Y'
+            }
+        });
+
+        var serverMode = '';
+        var initialData = {
+            user,
+            productCategories
+        };
+
+        var routes = ubicus.base.vue.getRoutesByMenu(menus);
+        var productManagerRoute = routes.find(e => e.name === 'ProductManager');
+
+        if(productManagerRoute) {
+            // 상품관리를 인덱스로 지정
+            productManagerRoute.alias = '/'
+        }
+
+        Vue.prototype.upload = {
+            maxFileSize,
+            allowedUploadExtensions
+        };
+
+        window.vueMain = new Vue({
+            el: '#app-wrapper',
+            vuetify: new Vuetify(),
+            router: new VueRouter({
+                routes
+            }),
+            store: new Vuex.Store({
+                modules: {
+                    base: baseStore // 네임스페이스
+                },
+                strict: true // 전역
+            }),
+            components: {
+                UbAppBar: UbAppBar,
+                UbNavigationDrawer: UbNavigationDrawer,
+                UbOverlay: UbOverlay
+            },
+            data: function () {
+                return {
+                    drawer: null,
+                    serverMode: serverMode,
+                    logo: {
+                        src: '/static/img/common/logo.jpg',
+                        title: 'Admin',
+                        width: 35,
+                        height: 35
+                    },
+                    templateMenus: menus,
+                    profile: {
+                        menuList: []
+                    }
+                };
+            },
+            created() {
+                this.$store.dispatch('base/initBaseStore', initialData);
+            },
+            mounted(){
+                ubicus.base.ui.activeDialogDraggable(true);
+            },
+            watch: {
+                $route: {
+                    immediate: true,
+                    handler(to) {
+                        if (to !== undefined && to.meta && to.meta.title) {
+                            document.title = '현대차증권 - 모바일 웹 관리자 - ' + to.meta.title;
+                        }
+                    }
+                }
+            }
+        });
+    })();
+</script>
+</body>
+</html>

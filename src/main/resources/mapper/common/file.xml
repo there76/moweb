@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmsec.common.file.service.FileRepository">
+    <sql id="selectFileSql">
+        SELECT
+            file_no
+             ,file_key
+             ,file_nm
+             ,file_path
+             ,file_size
+             ,file_dsc
+             ,ext_nm
+             ,reg_dt
+             ,user_file_nm
+             ,upd_dt
+             ,data_no
+             ,attach_div_cd
+             ,meta
+             ,reg_mngr_no
+        FROM tb_cmm_attach_file
+    </sql>
+
+    <insert id="insert" parameterType="AttachFile" useGeneratedKeys="true" keyProperty="fileNo">
+        INSERT INTO tb_cmm_attach_file(
+            file_no, file_key, file_nm, file_path, file_size, file_dsc, ext_nm, reg_dt, user_file_nm, upd_dt, data_no, attach_div_cd, meta, reg_mngr_no
+        )VALUES
+        <foreach collection="collection" item="item" index="index" separator=",">
+            (#{item.fileNo}, #{item.fileKey}, #{ item.fileNm}, #{ item.filePath}, #{ item.fileSize}, #{item.fileDsc}, #{ item.extNm}, #{ item.regDt},
+            #{ item.userFileNm}, #{ item.updDt}, #{ item.dataNo}, #{ item.attachDivCd}, #{item.meta}, #{item.regMngrNo})
+        </foreach>
+    </insert>
+
+    <delete id="delete">
+        DELETE
+        FROM tb_cmm_attach_file
+        WHERE file_key IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findFiles" resultType="AttachFile">
+        <include refid="selectFileSql"/>
+        WHERE attach_div_cd = #{attachDivCd}
+        AND data_no = #{dataNo}
+    </select>
+
+    <select id="findOne" resultType="AttachFile">
+        <include refid="selectFileSql"/>
+        WHERE file_key = #{fileKey}
+    </select>
+
+    <select id="findNotDeletableFileFullPathList" resultType="string">
+        SELECT CONCAT(CONCAT(file_path, '/'), file_nm)
+        FROM tb_cmm_attach_file
+        WHERE CONCAT(CONCAT(file_path, '/'), file_nm) IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        GROUP BY CONCAT(CONCAT(file_path, '/'), file_nm)
+    </select>
+
+    <update id="update" parameterType="AttachFile">
+        <foreach collection="list" item="item" index="index" separator=";">
+
+            UPDATE tb_cmm_attach_file
+            SET upd_dt = #{item.updDt}
+            <if test="item.attachDivCd != null">
+                ,attach_div_cd = #{item.attachDivCd}
+            </if>
+            <if test="item.fileDsc != null">
+                ,file_dsc = #{item.fileDsc}
+            </if>
+            <if test="item.fileSize != null and item.fileSize > 0">
+                ,file_size = #{item.fileSize}
+            </if>
+            <if test="@org.springframework.util.StringUtils@hasLength(item.filePath)">
+                ,file_path = #{item.filePath}
+            </if>
+            <if test="@org.springframework.util.StringUtils@hasLength(item.fileNm)">
+                ,file_nm = #{item.fileNm}
+            </if>
+            <if test="@org.springframework.util.StringUtils@hasLength(item.userFileNm)">
+                ,user_file_nm = #{item.userFileNm}
+            </if>
+            <if test="@org.springframework.util.StringUtils@hasLength(item.meta)">
+                ,meta = #{item.meta}
+            </if>
+            WHERE file_key =  #{item.fileKey}
+        </foreach>
+    </update>
+
+</mapper>

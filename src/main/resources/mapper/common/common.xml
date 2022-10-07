@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="common.sql">
+    <sql id="fragmentOrderBy">
+        <choose>
+            <when test="pageable != null and pageable.sort != null and !pageable.sort.isEmpty()">
+                ORDER BY
+                <foreach item="sort" index="index" collection="pageable.sort" open="" separator="," close="">
+                    <choose>
+                        <when test="sort.property == 'prdt_nm'">
+                            <![CDATA[
+                            IF(SUBSTRING(${sort.property}, 1,1) REGEXP '[`~!#$%^&*|\\\'\";:\/?\\[\\]]', 1,2) ${sort.direction},
+                            udf_NaturalSortFormat(TRIM(${sort.property}), 30, '.') ${sort.direction}
+                                 ]]>
+
+                        </when>
+                        <otherwise>
+                            ${sort.property} ${sort.direction}
+                        </otherwise>
+                    </choose>
+                </foreach>
+            </when>
+            <otherwise>${OrderBy}</otherwise>
+        </choose>
+    </sql>
+</mapper>
+

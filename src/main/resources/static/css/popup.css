@@ -1,0 +1,133 @@
+.popup-layer__wrap {
+
+}
+
+.popup-layer {
+    position: absolute;
+    z-index: 99999;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E2E2;
+}
+
+.popup-layer__content__wrap {
+    overflow: hidden;
+}
+
+.popup-layer .popup-layer__content__wrap .popup-layer__content__html {
+
+}
+
+.popup-layer .popup-layer__content__wrap .popup-layer__content__img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.popup-layer .popup-layer__btn__wrap {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    border-top: 1px solid #E2E2E2;
+}
+
+.popup-layer .popup-layer__btn__wrap .popup-layer__btn__cookie-close,
+.popup-layer .popup-layer__btn__wrap .popup-layer__btn__close {
+    height: auto;
+    flex-grow: 1;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.popup-layer .popup-layer__btn__wrap .popup-layer__btn__cookie-close {
+    border-right: 1px solid #E2E2E2;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 1050px) {
+    .popup-layer__wrap {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+    }
+
+    .popup-layer {
+        left: 50%!important;
+        top: 50%!important;
+        transform: translate(-50%, -50%);
+        font-size: 2.13333vw;
+    }
+    /*
+        .popup-layer .popup-layer__content__wrap {
+            max-width: 100%;
+            max-height: 100%;
+        }*/
+}
+
+.top-banner {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 99999;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.top-banner__link {
+    width: 100%;
+    height: 100%;
+}
+
+.top-banner__content__wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-banner .top-banner__content__wrap .top-banner__content__html {
+
+}
+
+.top-banner .top-banner__content__wrap .top-banner__content__img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.top-banner .top-banner__btn__wrap {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    height: 40px;
+}
+
+.top-banner .top-banner__btn__wrap .top-banner__btn__close {
+    height: auto;
+    flex-grow: 1;
+    cursor: pointer;
+    color: #000000;
+    background-color: transparent;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 1050px) {
+    .top-banner {
+        font-size: .8rem;
+        overflow: hidden;
+        height: 60px;
+    }
+
+    .top-banner .top-banner__content__wrap {
+        max-width: 100%;
+    }
+}

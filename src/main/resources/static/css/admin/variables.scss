@@ -1,0 +1,75 @@
+//v-table tr 높이
+$base-v-table-dense-height:32px;
+$base-v-table-height:48px;
+
+//상담메인 form-control 높이,select 높이, select2높이,input-group-append 높이
+$base-form-input-height:30px;
+
+//v-textinput높이
+$base-vtextinput-height:30px;
+
+/*기본 색 관리자*/
+
+$base-top-bgcolor: #3d4a5d; /*dialog 색 동일*/
+$base-top-ftcolor: #ffffff; /*dialog 색 동일*/
+$base-top-hover-bgcolor: #ff7f00;
+$base-top-hover-ftcolor: #ffffff;
+$base-top-ftcolor_07: rgba(0, 0, 0,  0.6);
+
+$base-left-bgcolor: #edf0f1;
+$base-left-ftcolor: #2c333e;
+$base-left-hover-bgcolor: #2c333e;
+$base-left-hover-ftcolor: #2c333e;
+
+
+//공통 탭,input(click)
+$base-tab-text: #17a2b8;
+
+
+//상담메인 기본색
+$main-base-bgcolor:#001f1a;
+$main-subbase-bgcolor:#f6f5ef;
+$main-top-state-div-bgcolor:hsla(0,0%,100%,.12);
+
+/*기본 버튼색*/
+$base-btn-primary: #ff7f00;
+$base-btn-secondary: #717c89;
+$base-btn-warning: #f0b857;
+$base-btn-error: #e72441;
+$base-btn-success: #4caf50;
+$base-btn-info:#17a2b8;
+$base-btn-green:#359d86;
+
+$base-border-color:#ededed;
+
+/* theme-dark,상담메인 */
+$dark-top-bgcolor: #3c3f41; /*dialog 색 동일*/
+$dark-top-ftcolor: #f0f0f0; /*dialog 색 동일*/
+$dark-top-hover-bgcolor: #2b2b2b;
+$dark-top-hover-ftcolor: #ff7f00;
+
+$dark-left-bgcolor: #3c3f41;
+$dark-left-ftcolor: #f0f0f0;
+$dark-left-hover-bgcolor: #3c3f41;
+$dark-left-hover-ftcolor: #ff7f00;
+
+$dark-content-bgcolor: #1e1e1e;
+
+/* dark 버튼색*/
+$dark-btn-primary: #ff7f00;
+$dark-btn-secondary: #b6b6b6;
+$dark-btn-warning: #fec07a;
+$dark-btn-error: #f4645f;
+$dark-btn-success: #83b692;
+$dark-btn-info:#48acf0;
+$dark-btn-green:#359d86;
+
+
+//상담메인 기본색
+$darkMain-base-bgcolor:#1e1e1e;
+$darkMain-subBase-bgcolor:#3c3f41;
+$darkMain-top-hover-bgcolor: #2b2b2b;
+$darkMain-v-input-bgcolor:#303030;
+
+$dark-tab-text:#ff7f00;
+$dark-border-color:#434343;

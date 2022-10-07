@@ -1,0 +1,35 @@
+{
+  "detailData":
+  [
+    {
+      "item": "item1",
+      "src":"/static/img/product/img_01.jpg",
+      "imgName": "EM-18-10호(B)1",
+      "count": "1"
+    },
+    {
+      "item": "item2",
+      "src":"/static/img/product/img_01.jpg",
+      "imgName": "EM-18-10호(B)2",
+      "count": "2"
+    },
+    {
+      "item": "item3",
+      "src":"/static/img/product/img_01.jpg",
+      "imgName": "EM-18-10호(B)3",
+      "count": "1"
+    },
+    {
+      "item": "item4",
+      "src":"/static/img/product/img_01.jpg",
+      "imgName": "EM-18-10호(B)4",
+      "count": "2"
+    },
+    {
+      "item": "item5",
+      "src":"/static/img/product/img_01.jpg",
+      "imgName": "EM-18-10호(B)5",
+      "count": "1"
+    }
+  ]
+}

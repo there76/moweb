@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmsec.modules.base.users.service.UserRepository">
+
+
+
+    <!--로그인 전용-->
+    <select id="findByUserIdForLogin" resultType="AppManager">
+        select * from tb_cmm_user where user_id = #{userId} and stat = 'JOINED'
+    </select>
+
+    <select id="findAll" resultType="HashMap">
+        select * from tb_cmm_user where stat = 'JOINED' limit 10
+    </select>
+
+    <insert id="insert" parameterType="AppUser" useGeneratedKeys="true" keyProperty="userNo">
+        INSERT INTO tb_cmm_user (
+            user_no,
+            user_tp,
+            user_id,
+            user_pw,
+            user_key,
+            user_nm,
+            phone,
+            email,
+            zip_cd,
+            addr,
+            addr2,
+            pw_err_cnt,
+            pw_upd_dt,
+            reg_dt,
+            upd_dt,
+            stat,
+            stat_dt,
+            cmpny_nm
+        )VALUES (
+                #{userNo}
+                ,#{userTp}
+                ,#{userId}
+                ,#{userPw}
+                ,#{userKey}
+                ,#{userNm}
+                ,#{phone}
+                ,#{email}
+                ,#{zipCd}
+                ,#{addr}
+                ,#{addr2}
+                ,#{pwErrCnt}
+                ,#{pwUpdDt}
+                ,#{regDt}
+                ,#{updDt}
+                ,#{stat}
+                ,#{statDt}
+                ,#{cmpnyNm}
+                )
+    </insert>
+
+    <update id="update">
+
+        <if test="userPw == null">
+        UPDATE tb_cmm_user SET
+        user_no = #{userNo}
+
+        <if test="userNm != null">
+            ,user_nm=#{userNm}
+        </if>
+        <if test="email != null">
+            ,email=#{email}
+        </if>
+
+        <if test="phone != null">
+            ,phone=#{phone}
+        </if>
+        <if test="email != null">
+            ,email=#{email}
+        </if>
+        <if test="zipCd != null">
+            ,zip_cd=#{zipCd}
+        </if>
+        <if test="addr != null">
+            ,addr=#{addr}
+        </if>
+        <if test="addr2 != null">
+            ,addr2=#{addr2}
+        </if>
+
+
+        WHERE user_no = #{userNo};
+        </if>
+        <if test="userPw != null">
+            UPDATE tb_cmm_user SET
+            user_pw = #{userPw}
+            ,pw_err_cnt = 0
+            ,pw_upd_dt = now()
+            WHERE user_no = #{userNo};
+        </if>
+    </update>
+
+
+    <update id="resetPasswordCnt">
+        UPDATE tb_cmm_user SET
+        pw_err_cnt = 0,
+        pw_upd_dt = now()
+        WHERE user_no = #{userNo}
+    </update>
+
+    <update id="plusPasswordCnt">
+        <selectKey keyProperty="pwErrCnt" resultType="int" order="AFTER">
+            SELECT pw_err_cnt FROM tb_cmm_user WHERE user_no = #{userNo} AND stat = 'JOINED'
+        </selectKey>
+
+        UPDATE tb_cmm_user SET
+        pw_err_cnt = pw_err_cnt + 1
+        WHERE user_no = #{userNo}
+        AND stat = 'JOINED'
+    </update>
+
+    <select id="checkEmail" resultType="string">
+        SELECT user_no
+        FROM tb_cmm_user
+        WHERE email = #{email}
+          AND stat != 'WITHDRAWAL'
+        LIMIT 1
+    </select>
+
+
+    <select id="findByUserId" resultType="AppUser">
+        SELECT *
+        FROM tb_cmm_user
+        WHERE user_id = #{userId}
+          AND stat != 'WITHDRAWAL'
+        LIMIT 1
+    </select>
+
+
+    <select id="findByUserEmail" resultType="AppUser">
+        SELECT *
+        FROM tb_cmm_user
+        WHERE email = #{email}
+          AND stat != 'WITHDRAWAL'
+        LIMIT 1
+    </select>
+
+    <select id="findByUserNo" resultType="AppUser">
+        SELECT *
+        FROM tb_cmm_user
+        WHERE user_no = #{userNo}
+          AND stat != 'WITHDRAWAL'
+        LIMIT 1
+    </select>
+
+
+    <update id="changePasswd" parameterType="AppUser">
+        UPDATE tb_cmm_user
+        SET user_pw = #{userPw}
+            ,pw_err_cnt = 0
+            ,pw_upd_dt = now()
+        WHERE user_id = #{userId}
+    </update>
+
+
+    <update id="confirm" parameterType="AppUser">
+        UPDATE tb_cmm_user
+        SET stat = 'JOINED'
+            ,pw_err_cnt = 0
+            ,pw_upd_dt = now()
+            ,upd_dt = now()
+        WHERE user_id = #{userId}
+    </update>
+
+</mapper>

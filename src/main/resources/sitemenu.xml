@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemenu id="hmsec" name="hmsec-moweb">
+    <application id="hmsec-front" name="hmsec-front" path="/" paths="/index" template="front">
+        <menu name="두레제품" display="Y" path="/product" params="loc^left"/>
+        <menu name="두레제품" display="Y" path="/product/view" params="loc^left,display^N">상세</menu>
+        <menu name="연구개발" display="Y" path="/development" params="loc^left"/>
+        <menu name="두레시설" display="Y" path="/facility" params="loc^left"/>
+        <menu name="회사소개" display="Y" path="/company" params="loc^left">
+            <menu name="회사소개" display="Y" path="/company" />
+            <menu name="보유인증서" display="Y" path="/company/certificate" />
+            <menu name="카탈로그" display="Y" path="/company/catalogue" />
+            <menu name="오시는길" display="Y" path="/company/location" />
+            <menu name="연혁" display="Y" path="/company/history" />
+        </menu>
+
+        <menu name="Sample" display="Y" path="/sample" params="loc^right"/>
+        <menu name="샘플신청 내역" display="Y" path="/sample/sampleList" params="display^N"/>
+        <menu name="제품상담" display="Y" path="/consulting" params="loc^right,className^js-check-login"/>
+        <menu name="제품상담 내역" display="Y" path="/consulting/consultingList" params="display^N"/>
+
+        <menu name="마이페이지" display="Y" path="/user/mypage" params="display^N"/>
+        <menu name="비밀번호변경" display="Y" path="/user/changePw" params="display^N"/>
+        <menu name="Login" display="Y" path="/login" params="display^N"/>
+        <menu name="회원가입" display="Y" path="/join" params="display^N"/>
+        <menu name="비밀번호 찾기" display="Y" path="/findId" params="display^N"/>
+        <menu name="아이디 찾기" display="Y" path="/findPw" params="display^N"/>
+        <menu name="비밀번호 변경" display="Y" path="/resetPw" params="display^N"/>
+        <menu name="회원가입신청완료" display="Y" path="/joinOk" params="display^N"/>
+        <menu name="회원가입완료" display="Y" path="/confirm" params="display^N"/>
+        <menu name="개인정보보호처리방침" display="Y" path="/privacy" params="display^N"/>
+        <menu name="이용약관" display="Y" path="/terms" params="display^N"/>
+    </application>
+
+    <application id="hmsec-admin" name="hmsec-admin" path="/admin" >
+        <menu name="회원관리" path="/admin/customer/CustomerManager"/>
+        <menu name="샘플신청관리" path="/admin/sample/SampleRequestManager"/>
+        <menu name="제품상담관리" path="/admin/consulting/ConsultingManager"/>
+        <menu name="상품관리" path="/admin/product/ProductManager">
+            <menu name="상품관리" path="/admin/product/ProductManager"/>
+            <menu name="카테고리관리" path="/admin/product/category/ProductCategoryManager"/>
+            <menu name="상품공통컨텐츠 관리" path="/admin/product/ProductCommonContentsManager"/>
+        </menu>
+        <menu name="인증서관리" path="/admin/certificate/CertificateManager"/>
+        <menu name="팝업관리" path="/admin/popup/PopupManager"/>
+        <menu name="카탈로그관리" path="/admin/catalogue/CatalogueManager"/>
+        <menu name="사이트관리" path="/admin/site/code/UbBaseCode">
+            <menu name="코드관리" path="/admin/site/code/UbBaseCode"/>
+            <menu name="메뉴관리" path="/admin/site/menu/UbBaseMenu"/>
+        </menu>
+    </application>
+</sitemenu>

@@ -1,0 +1,33 @@
+{
+  "user": {
+    "rolesSet": [
+      "ROLE_USER",
+      "ROLE_ADMIN"
+    ],
+    "userNo": 17,
+    "userTp": "ADMIN",
+    "userId": "there",
+    "userKey": "d994091b-ce70-44f5-94f2-1f1ac6b69dc2",
+    "userNm": "김재성",
+    "phone": "01037223103",
+    "email": "nice.vincent@gmail.com",
+    "zipCd": "07599",
+    "addr": "서울 강서구 마곡서1로 111-11",
+    "addr2": "505",
+    "pwUpdDt": "2022-08-19 16:48:13",
+    "regDt": "2022-02-11 16:42:59",
+    "updDt": "2022-02-11 16:53:47",
+    "stat": "JOINED",
+    "statDt": "2022-02-11 16:42:59",
+    "cmpnyNm": "제아",
+    "mngrNo": 17,
+    "accountNonExpired": true,
+    "enabled": true,
+    "username": "there",
+    "cmpnyNo": 1,
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "userTpNm": "어드민",
+    "statNm": "가입"
+  }
+}
