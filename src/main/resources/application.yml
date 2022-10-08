@@ -53,8 +53,6 @@ spring:
       username: dure
       password: enfp1!2@
       maximum-pool-size: 3
-
-
 jasypt:
   encryptor:
     bean: encryptorBean
