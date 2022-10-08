@@ -71,7 +71,7 @@ apps:
     allowedUploadExtensions: jpg,jpeg,png,gif,mp4,pdf
     allowedAccessExtensions: jpg,jpeg,png,gif,mp4,pdf
     publicUrl: /data/files
-    root: ${apps.upload.fileSystem}:///Users/jaesungkim/IdeaProjects/moweb/target/classes/static
+    root: ${apps.upload.fileSystem}:///home/appdev/webapps/
     #root: ${apps.upload.fileSystem}://${aws.accessKey}:${aws.secretKey}:${aws.region}@${aws.bucket}.s3.amazonaws.com
   product:
     thumbnailSize:
