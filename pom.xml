@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.hmsec.moweb</groupId>
     <artifactId>moweb</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>moweb</name>
     <description>moweb</description>
@@ -20,16 +20,16 @@
 
     <repositories>
         <repository>
-            <id>maven-public</id>
+            <id>maven-group</id>
             <url>http://localhost:8081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-group</id>
+            <url>http://localhost:8081/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <dependency>
