@@ -21,7 +21,7 @@
     <repositories>
         <repository>
             <id>maven-group</id>
-            <url>http://localhost:8081/repository/maven-public/</url>
+            <url>http://10.211.55.2:8081/repository/maven-public/</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -118,8 +118,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>org.springframework.boot</groupId>        <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -232,12 +231,12 @@
         <repository>
             <id>hmsec-moweb-release</id>
             <name>Public Repository(snapshot)</name>
-            <url>http://localhost:8081/repository/hmsec-moweb-release/</url>
+            <url>http://10.211.55.2:8081/repository/hmsec-moweb-release/</url>
         </repository>
         <snapshotRepository>
             <id>hmsec-moweb-snapshot</id>
             <name>Public Repository</name>
-            <url>http://localhost:8081/repository/hmsec-moweb-snapshot/</url>
+            <url>http://10.211.55.2:8081/repository/hmsec-moweb-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 
