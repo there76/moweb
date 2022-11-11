@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <style>
+        .mobile {overflow-y: auto;width: 500px;height: 1000px; background: powderblue;}
+        .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js"></script>
+</head>
+<body>
+<iframe src="/aa.pdf" ></iframe>
+
+    fdsafs
+
+<div class="mobile">
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+    <p>스크롤 맨 아래 감지</p>
+</div>
+
+<embed src="/aa.pdf" type="application/pdf" />
+
+
+<div id="example1" class="mobile"></div>
+<script>PDFObject.embed("test.pdf", "#example1");</script>
+
+
+<div id="example2" class="mobile"></div>
+<script>PDFObject.embed("test.html", "#example2");</script>
+
+
+
+<button type="button" id="confirm" disabled >버튼</button>
+<script>
+
+    $(".mobile").scroll(function(){
+        var scrollTop = $(this).scrollTop();
+        var innerHeight = $(this).innerHeight();
+        var scrollHeight = $(this).prop('scrollHeight');
+
+        if (scrollTop + innerHeight >= scrollHeight) {
+            $("#confirm").attr('disabled', false);
+        } else {
+            $("#confirm").attr('disabled', true);
+        }
+    });
+</script>
+
+
+</body>
+</html>

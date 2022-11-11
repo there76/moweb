@@ -81,4 +81,11 @@ public class IndexController {
     }
 
 
+    @GetMapping("/agree")
+    public String agree() {
+        return "thymeleaf/agree";
+    }
+
+
+
 }
